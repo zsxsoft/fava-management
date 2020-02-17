@@ -1,6 +1,6 @@
 from child import fava_child
 from contextlib import closing
-from multiprocessing import Process
+import multiprocessing as mp
 
 import socket
 import sys
@@ -57,7 +57,8 @@ class FavaProcess (SingletonMixin):
         fava_opts = vars(parse_fava_opts(self.fava_option))
         fava_opts['port'] = self.port
         fava_opts['key'] = self.key
-        self.process = Process(target=fava_child, args=[fava_opts])
+        #ctx = mp.get_context('spawn')
+        self.process = mp.Process(target=fava_child, args=[fava_opts])
         self.process.start()
 
     def restart(self):

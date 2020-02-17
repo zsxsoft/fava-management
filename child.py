@@ -37,7 +37,7 @@ def fava_child(args):
 
     env_filename = os.environ.get("BEANCOUNT_FILE")
     if env_filename:
-        filenames = filenames + tuple(env_filename.split())
+        filenames = filenames + env_filename.split()
 
     if not filenames:
         raise click.UsageError("No file specified")
