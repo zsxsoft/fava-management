@@ -24,8 +24,13 @@ logging.getLogger('revproxy.response').setLevel(logging.ERROR)
 class ReverseFava(ProxyView):
     def __init__(self):
         super().__init__()
-        process = FavaProcess.instance()
-        self.upstream = 'http://127.0.0.1:' + str(process.port) + '/fava/'
+        self.process = FavaProcess.instance()
+        self.upstream = 'http://127.0.0.1:' + str(self.process.port) + '/fava/'
+
+    def get_request_headers(self):
+        headers = super(ReverseFava, self).get_request_headers()
+        headers['Key'] = self.process.key
+        return headers
 
 @login_required(login_url = '/')
 def restart(request):

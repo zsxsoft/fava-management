@@ -7,7 +7,14 @@ import sys
 import argparse
 import shlex
 import threading
+import string
+import secrets
 from time import sleep
+
+def generate_secure_random_string(stringLength=10):
+    """Generate a secure random string of letters, digits and special characters """
+    password_characters = string.ascii_letters + string.digits + string.punctuation
+    return ''.join(secrets.choice(password_characters) for i in range(stringLength))
 
 def parse_fava_opts (s):
     parser = argparse.ArgumentParser(description='Fava opts')
@@ -46,8 +53,10 @@ class FavaProcess (SingletonMixin):
 
     def create_process(self):
         self.port = find_free_port()
+        self.key =generate_secure_random_string(10)
         fava_opts = vars(parse_fava_opts(self.fava_option))
         fava_opts['port'] = self.port
+        fava_opts['key'] = self.key
         self.process = Process(target=fava_child, args=[fava_opts])
         self.process.start()
 
