@@ -30,12 +30,15 @@ python3 manage.py runserver --fava="your_beancount_entrypoint_file"
 See [Django documentation](https://docs.djangoproject.com/en/3.0/ref/django-admin/) for details.
 
 ## Production
-You need to setup static files, otherwise your CSS may not work properly. BTW it's not important, fava always works fine.
-
 ```bash
 BEANCOUNT_FILE=your_beancount_entrypoint_file gunicorn management.wsgi
 ```
 See [Gunicorn documentation](https://docs.gunicorn.org/en/latest/run.html#django) for details.
+
+## Docker
+```bash
+docker run --rm -v/home/ubuntu/bean:/bean -p8080:80 -eBEANCOUNT_FILE=/bean/main.bean -eUSERNAME=admin -ePASSWORD=12345678 -it zsxsoft/fava-management
+```
 
 ## Need more security?
 
