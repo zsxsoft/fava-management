@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+def generate_secret_key(filename):
+    from django.core.management.utils import get_random_secret_key
+    f = open(filename, "w+")
+    f.write("SECRET_KEY = '{}'\n".format(get_random_secret_key()))
+    f.close()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,7 +26,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'xqzz@-v5=bi+884v1)(u4&k7r@ab6t-2_r4i+bmica5qzt6wj4'
+try:
+    from secret_key import SECRET_KEY
+except ImportError:
+    generate_secret_key(os.path.join(BASE_DIR, 'secret_key.py'))
+    from secret_key import SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

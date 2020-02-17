@@ -9,7 +9,7 @@ If you want to deploy fava on the server, you will find that the fava process ma
 1. Fava restart
 2. Fava authentication
 
-## Installion
+## Installation
 ```bash
 git clone https://github.com/zsxsoft/fava-management
 cd fava-management
@@ -22,7 +22,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-## Usage
+## Development
 ```bash
 python3 manage.py runserver --fava="your_beancount_entrypoint_file"
 ```
@@ -30,6 +30,8 @@ python3 manage.py runserver --fava="your_beancount_entrypoint_file"
 See [Django documentation](https://docs.djangoproject.com/en/3.0/ref/django-admin/) for details.
 
 ## Production
+You need to setup static files, otherwise your CSS may not work properly. BTW it's not important, fava always works fine.
+
 ```bash
 BEANCOUNT_FILE=your_beancount_entrypoint_file gunicorn management.wsgi
 ```
