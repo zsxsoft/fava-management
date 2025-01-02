@@ -21,4 +21,4 @@ RUN yes | python3 manage.py collectstatic && \
 
 ENV WORKERS 2
 ENTRYPOINT [ "/app/prestart.sh" ]
-CMD ["gunicorn", "management.wsgi", "-w", "2", "-b", ":80"]
+CMD ["gunicorn", "management.wsgi", "-w", "4", "-b", ":80"]
