@@ -44,6 +44,7 @@ def fava_child(args):
 
     app.config["BEANCOUNT_FILES"] = filenames
     app.config["INCOGNITO"] = incognito
+    app.url_map.strict_slashes = False
 
     if prefix:
         app.wsgi_app = DispatcherMiddleware(
