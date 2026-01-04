@@ -10,24 +10,25 @@ If you want to deploy fava on the server, you will find that the fava process ma
 2. Fava authentication
 
 ## Installation
+
+Recommended installation method is using [uv](https://github.com/astral-sh/uv).
+
 ```bash
 git clone https://github.com/zsxsoft/fava-management
 cd fava-management
-# If you have your own fava and beancount installed, you can just
-# pip install django django-revproxy
-pip install -r requirements.txt
+uv sync
 # Create database
-python manage.py migrate
+uv run manage.py migrate
 # Create superuser
-python manage.py createsuperuser
+uv run manage.py createsuperuser
 ```
 
 ## Development
 ```bash
-python3 manage.py runserver --fava="your_beancount_entrypoint_file"
+uv run manage.py runserver --fava="your_beancount_entrypoint_file"
 ```
 
-See [Django documentation](https://docs.djangoproject.com/en/3.0/ref/django-admin/) for details.
+See [Django documentation](https://docs.djangoproject.com/en/6.0/ref/django-admin/) for details.
 
 ## Production
 ```bash
