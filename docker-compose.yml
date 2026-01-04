@@ -1,0 +1,17 @@
+version: '3'
+networks:
+  fava:
+services:
+  fava:
+    restart: always
+    networks:
+      - fava
+    build:
+      context: .
+    extra_hosts:
+    ports:
+      - "0.0.0.0:5555:80"
+    volumes:
+    environment:
+      - USERNAME=login
+      - PASSWORD=123456

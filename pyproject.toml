@@ -1,0 +1,21 @@
+[project]
+name = "fava-management"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beancount>=3.2.0",
+    "django>=6.0",
+    "django-revproxy>=0.13.0",
+    "dotenv>=0.9.9",
+    "fava>=1.30.9",
+    "gunicorn>=23.0.0",
+    "openai>=2.14.0",
+    "pillow>=12.1.0",
+    "whitenoise>=6.11.0",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
