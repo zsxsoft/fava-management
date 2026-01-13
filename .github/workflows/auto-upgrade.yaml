@@ -1,0 +1,57 @@
+name: Check Fava Updates
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  check-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+      - name: Update Fava and Detect Version
+        id: update_process
+        run: |
+          uv add fava beancount --upgrade
+          if [[ -n $(git status --porcelain uv.lock) ]]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            NEW_VERSION=$(uv export --no-hashes | grep "^fava==" | cut -d'=' -f3)
+            echo "New version detected: $NEW_VERSION"
+            echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit, Tag and Push
+        if: steps.update_process.outputs.changed == 'true'
+        env:
+          NEW_VERSION: ${{ steps.update_process.outputs.version }}
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add pyproject.toml uv.lock
+          git commit -m "Update Fava to $NEW_VERSION"
+          TAG_NAME="$NEW_VERSION"
+          
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME exists"
+          else
+            echo "Create tag: $TAG_NAME"
+            git tag "$TAG_NAME"
+          fi
+
+          git push origin master
+          git push origin --tags
