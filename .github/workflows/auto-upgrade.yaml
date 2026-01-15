@@ -25,14 +25,17 @@ jobs:
       - name: Update Fava and Detect Version
         id: update_process
         run: |
+          OLD_VERSION=$(uv export --no-hashes | grep "^fava==" | cut -d'=' -f3)
           uv add fava beancount --upgrade
-          if [[ -n $(git status --porcelain uv.lock) ]]; then
+          NEW_VERSION=$(uv export --no-hashes | grep "^fava==" | cut -d'=' -f3)
+          if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
+            echo "Fava updated from $OLD_VERSION to $NEW_VERSION"
             echo "changed=true" >> $GITHUB_OUTPUT
-            NEW_VERSION=$(uv export --no-hashes | grep "^fava==" | cut -d'=' -f3)
-            echo "New version detected: $NEW_VERSION"
             echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
           else
+            echo "Fava version unchanged ($OLD_VERSION). Discarding lockfile changes."
             echo "changed=false" >> $GITHUB_OUTPUT
+            git checkout .
           fi
 
       - name: Commit, Tag and Push
