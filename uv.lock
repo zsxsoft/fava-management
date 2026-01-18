@@ -214,7 +214,7 @@ wheels = [
 
 [[package]]
 name = "fava"
-version = "1.30.10"
+version = "1.30.11"
 source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }
 dependencies = [
     { name = "babel" },
@@ -229,13 +229,12 @@ dependencies = [
     { name = "markdown2" },
     { name = "ply" },
     { name = "simplejson" },
-    { name = "tatsu-lts" },
     { name = "watchfiles" },
     { name = "werkzeug" },
 ]
-sdist = { url = "https://pypi.tuna.tsinghua.edu.cn/packages/50/cf/92cc763f24bbc84ac42bfe52846a125080be8ef8764f162eed084b867fce/fava-1.30.10.tar.gz", hash = "sha256:0a63eb498cfd6f9d04ffe251396c6049a4f1a91df3e136f403d157d85d7b5d73", size = 2637798, upload-time = "2026-01-12T18:53:49.281Z" }
+sdist = { url = "https://pypi.tuna.tsinghua.edu.cn/packages/2f/bc/8dcbaf4711603a8c62f3943b19bebfed25a8226d921ad942b19e3d8abec7/fava-1.30.11.tar.gz", hash = "sha256:384b71b654e1ea8df23f6f7a2a11a2c5f8ebe6206d3b01b7f77f9677e5e88b37", size = 2664000, upload-time = "2026-01-17T18:41:13.797Z" }
 wheels = [
-    { url = "https://pypi.tuna.tsinghua.edu.cn/packages/7c/40/a005cd0e7908e7f02e84a0089e34382d3e1816a314de37a18a96e81c5230/fava-1.30.10-py3-none-any.whl", hash = "sha256:d472766a0e87510539534d4738d82b7e2fdd464f54258b97cc55d6d9773761aa", size = 2158999, upload-time = "2026-01-12T18:53:50.832Z" },
+    { url = "https://pypi.tuna.tsinghua.edu.cn/packages/46/03/a9fc4cdd61a0f676a27369a03b29cd13650c0e85e244f80af8211c57d4ca/fava-1.30.11-py3-none-any.whl", hash = "sha256:15bab8cc5880cde13f2e52ee0e27248fb862af1e12537a1638ef0ad5a44344f2", size = 2180430, upload-time = "2026-01-17T18:41:15.434Z" },
 ]
 
 [[package]]
@@ -907,11 +906,11 @@ wheels = [
 
 [[package]]
 name = "tatsu-lts"
-version = "5.14.0"
+version = "5.16.0"
 source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }
-sdist = { url = "https://pypi.tuna.tsinghua.edu.cn/packages/ec/c3/d542908e1e541ec028dd6a7be800c20da02282bda15b57de441afff98bfb/tatsu_lts-5.14.0.tar.gz", hash = "sha256:1f09f328aa4a5b53242055e8e24493ef7d9e4f770b90daa4d4de7c88523c232a", size = 126665, upload-time = "2025-12-26T10:28:55.986Z" }
+sdist = { url = "https://pypi.tuna.tsinghua.edu.cn/packages/d3/81/9ab714191017d23a0e73921e7d869890e5bf6a5eca89dee57d2b76c6c536/tatsu_lts-5.16.0.tar.gz", hash = "sha256:40ad376b4ed4e139a8d00d00bd6659d44c3b7546933fb3314132f776bfa1f44f", size = 226534, upload-time = "2026-01-14T00:00:57.794Z" }
 wheels = [
-    { url = "https://pypi.tuna.tsinghua.edu.cn/packages/5d/d0/6c47488dac70e67746fc7b34b1b9fd1e59987991eaee8112b15c0c3eabdd/tatsu_lts-5.14.0-py3-none-any.whl", hash = "sha256:80c9db343cab0e35cacbbfd7148444a3b73584c27b571e606e34f0da292716e2", size = 80354, upload-time = "2025-12-26T10:28:54.346Z" },
+    { url = "https://pypi.tuna.tsinghua.edu.cn/packages/84/d3/c4c50188b3a75530eab685899c2efae85a1892be50335f4700963d8a1e14/tatsu_lts-5.16.0-py3-none-any.whl", hash = "sha256:43b21f741a8d1b03148e84294aa6867ab0607f9c3325d93df8b0cf3ad8ece74b", size = 82963, upload-time = "2026-01-14T00:00:56.406Z" },
 ]
 
 [[package]]
